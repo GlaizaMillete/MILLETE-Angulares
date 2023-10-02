@@ -8,7 +8,7 @@ import { Injectable } from "@angular/core";
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit{
-
+  n= 0;
   listofPosts: Post[] = []
   
   constructor(private postService: PostService) { }

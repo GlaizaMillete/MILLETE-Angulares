@@ -22,8 +22,8 @@ export class PostService{
     updatePost(index: number, post: Post){
         this.listofPosts[index]=post;
     }
-    
-
-    
-    
+    getSpecPost(index: number) {
+        return this.listofPosts[index];
+    }
+ 
 }

@@ -5,5 +5,5 @@
 </p>
 <p>Author: {{ post?.author }}</p>
 <p>Date: {{ post?.dateCreated }}</p>
-<button class="btn btn-success">edit</button> &nbsp;|
+<button class="btn btn-success"(click)="onEdit()">edit</button> &nbsp;|
 <button class="btn btn-danger" (click)="delete()" >delete</button>

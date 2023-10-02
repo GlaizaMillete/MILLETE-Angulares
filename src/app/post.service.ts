@@ -23,4 +23,7 @@ export class PostService{
         this.listofPosts[index]=post;
     }
     
+
+    
+    
 }

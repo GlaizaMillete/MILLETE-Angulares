@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'post-list', pathMatch: 'full'},
   { path: 'post-list', component: PostListComponent },
   { path: 'post-add', component: PostEditComponent },
-  { path: 'authentication', component: AuthComponent }
+  { path: 'authentication', component: AuthComponent },
+  { path: 'post-edit/:index', component: PostEditComponent }
 ];
 
 

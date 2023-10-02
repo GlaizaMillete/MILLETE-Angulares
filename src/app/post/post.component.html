@@ -1,0 +1,9 @@
+<h3>{{ post?.title }}</h3>
+<img class="img-responisve" src="{{ post?.image }}">
+<p>
+    {{ post?.description }}
+</p>
+<p>Author: {{ post?.author }}</p>
+<p>Date: {{ post?.dateCreated }}</p>
+<button class="btn btn-success">edit</button> &nbsp;|
+<button class="btn btn-danger" (click)="delete()" >delete</button>

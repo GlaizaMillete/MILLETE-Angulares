@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class PostComponent implements OnInit{
   @Input() index: number = 0;
   @Input() post?: Post;
+  newComment: string = '';
 
   constructor(private postService: PostService, private router: Router, private actRoute: ActivatedRoute) { }
 
@@ -22,6 +23,13 @@ export class PostComponent implements OnInit{
   }
   onEdit(){
     this.router.navigate(['/post-edit', this.index]);
+  }
+  onlike(){
+    this.postService.likePost(this.index)
+  }
+  addComment(comment: string){
+    this.postService.addComments(this.index, comment);
+    this.newComment = '';
   }
 }
 

@@ -49,9 +49,9 @@ export class PostEditComponent {
     const title = this.form.value.title;
     const image = this.form.value.image;
     const description = this.form.value.description;
-   
+    const numberoflikess = this.form.value.numberoflikes;
     const post: Post = new Post(
-      title, image, description, 'Glaiza', new Date()
+      title, image, description, 'Glaiza', new Date(), numberoflikess, []
     );
 
   

@@ -31,8 +31,12 @@
           </li> -->
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button> -->
+          <button class="nav-link btn btn-outline-success" type="submit" (click)="onSave()">SAVE</button> &nbsp;&nbsp;
+          <button class="nav-link btn btn-outline-success" type="submit" (click)="onFetch()">GET</button> &nbsp;&nbsp;
+          <button class="nav-link btn btn-outline-success" type="submit">Sign In</button>
+          <button class="nav-link btn btn-outline-success" type="submit">Sign Up</button>
         </form>
       </div>
     </div>

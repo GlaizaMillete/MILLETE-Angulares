@@ -8,6 +8,8 @@ import { PostComponent } from './post/post.component';
 import { PostEditComponent } from './post-edit/post-edit.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'post-list', pathMatch: 'full'},
@@ -20,7 +22,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, AuthComponent, HeaderComponent, PostComponent, PostEditComponent, PostListComponent],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule ],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpClientModule ],
   providers: [],
   bootstrap: [AppComponent]
 })

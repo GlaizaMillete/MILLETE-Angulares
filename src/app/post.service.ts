@@ -1,9 +1,15 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { Post } from './post.model';
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 
 export class PostService{
+
+    private apiUrl = 'https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json';
+
+    constructor(private http: HttpClient){}
 
     listChangedEvent: EventEmitter<Post[]> = new EventEmitter();
 
@@ -38,5 +44,10 @@ export class PostService{
         this.listofPosts = listofPosts;
         this.listChangedEvent.emit(listofPosts);
     }
+    // getPostContent(index: number): Observable<any> {
+    //     const url = `${this.apiUrl}/${index}`;
+    //     return this.http.get(url);
+    // }
+    
  
 }

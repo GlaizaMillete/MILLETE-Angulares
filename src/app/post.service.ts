@@ -7,10 +7,6 @@ import { Observable } from "rxjs";
 
 export class PostService{
 
-    private apiUrl = 'https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json';
-
-    constructor(private http: HttpClient){}
-
     listChangedEvent: EventEmitter<Post[]> = new EventEmitter();
 
     listofPosts: Post[] = [
@@ -44,10 +40,7 @@ export class PostService{
         this.listofPosts = listofPosts;
         this.listChangedEvent.emit(listofPosts);
     }
-    // getPostContent(index: number): Observable<any> {
-    //     const url = `${this.apiUrl}/${index}`;
-    //     return this.http.get(url);
-    // }
+    
     
  
 }

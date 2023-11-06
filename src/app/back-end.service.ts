@@ -23,8 +23,16 @@ export class BackEndService {
     return this.http.get<Post[]>('https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json')
     .pipe(tap((listofPosts: Post[])=> {
       console.log(listofPosts)
+
+      listofPosts.forEach(post => {
+        if (!Array.isArray(post.comments)) {
+          post.comments = [];
+        }
+      });
+      
       this.postService.setPosts(listofPosts);
-      // this.postService.listChangedEvent.emit(listofPosts);
-    })).subscribe();
+      this.postService.listChangedEvent.emit(listofPosts);
+    }))
+    .subscribe();
   }
 }

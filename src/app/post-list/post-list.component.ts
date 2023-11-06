@@ -2,8 +2,6 @@ import { Component, OnInit , Input} from '@angular/core';
 import { Post } from '../post.model';
 import { PostService } from '../post.service';
 import { Injectable } from "@angular/core";
-// import { ActivatedRoute } from '@angular/router';
-// import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',

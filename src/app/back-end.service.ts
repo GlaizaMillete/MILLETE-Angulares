@@ -15,12 +15,12 @@ export class BackEndService {
     const listofPosts: Post[] = this.postService.getPost();
     this.http.put('https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json', listofPosts)
     .subscribe((res) => {
-      console.log(res)
+      console.log(res);
     })
   }
 
   fetchData(){
-    this.http.get<Post[]>('https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json')
+    return this.http.get<Post[]>('https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json')
     .pipe(tap((listofPosts: Post[])=> {
       console.log(listofPosts)
       this.postService.setPosts(listofPosts);

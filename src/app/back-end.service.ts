@@ -24,6 +24,7 @@ export class BackEndService {
     .pipe(tap((listofPosts: Post[])=> {
       console.log(listofPosts)
       this.postService.setPosts(listofPosts);
+      // this.postService.listChangedEvent.emit(listofPosts);
     })).subscribe();
   }
 }

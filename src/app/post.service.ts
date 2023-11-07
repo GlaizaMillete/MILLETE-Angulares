@@ -4,43 +4,72 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
-
 export class PostService{
+    constructor(private http: HttpClient) {
+        this.fetchData();
+    }
 
     listChangedEvent: EventEmitter<Post[]> = new EventEmitter();
 
-    listofPosts: Post[] = [
-        // new Post("Tech Crunch", "https://www.hostinger.ph/tutorials/wp-content/uploads/sites/2/2021/12/techcrunch-website-homepage.png", "TechCrunch is a blog that provides technology and startup news, from the latest developments in Silicon Valley to venture capital funding.", "Glaiza", new Date(), 9, []),
-    
-        // new Post ("The Verge", "https://www.hostinger.ph/tutorials/wp-content/uploads/sites/2/2021/12/the-verge-website-homepage.png", "The Verge is a blog focused on examining how technology will change the future", "Glaiza", new Date(), 9, [])
-    ];
-    
-    getPost(){
-        return this.listofPosts;
+    listofPosts: Post[] = [];
+
+    getPost() {
+        return [...this.listofPosts];
     }
+
     deletePost(index: number){
         this.listofPosts.splice(index, 1);
+        this.saveData();
     }
+
     addPost(post: Post){
         this.listofPosts.push(post);
+        this.saveData();
     }
+
     updatePost(index: number, post: Post){
         this.listofPosts[index]=post;
+        this.saveData();
     }
+
     getSpecPost(index: number) {
         return this.listofPosts[index];
     }
+
     likePost(index: number) {
         this.listofPosts[index].numberoflikes++;
+        this.saveData();
     }
+
     addComments(index: number, comment: string){
         this.listofPosts[index].comments.push({text: comment, timestamp: new Date() });
+        this.saveData();
     }
-    setPosts(listofPosts: Post[]){
+
+    setPosts(listofPosts: Post[]) {
         this.listofPosts = listofPosts;
         this.listChangedEvent.emit(listofPosts);
     }
-    
-    
- 
+
+    saveData() {
+        this.http.put('https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json', this.listofPosts)
+        .subscribe((res) => {
+            console.log(res);
+        });
+    }
+
+    fetchData() {
+        this.http.get<Post[]>('https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json')
+        .subscribe((listofPosts: Post[]) => {
+            console.log(listofPosts)
+
+            listofPosts.forEach(post => {
+                if (!Array.isArray(post.comments)) {
+                    post.comments = [];
+                }
+            });
+            
+            this.setPosts(listofPosts);
+        });
+    }
 }

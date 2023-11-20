@@ -1,21 +1,21 @@
-<h3 *ngIf="editMode==false">CREATE POST</h3>
-<h3 *ngIf="editMode==true">EDIT POST</h3>
-<form [formGroup] = "form" (ngSubmit)="onSubmit()" >
+<h3 class="fontsto" *ngIf="editMode==false" style="color: white; margin-top: 2%; margin-left: 2%;">CREATE POST</h3> &nbsp;
+<h3 class="fontsto"  *ngIf="editMode==true" style="color: white; margin-left: 2%;">EDIT POST</h3>
+<form class="form"  [formGroup] = "form" (ngSubmit)="onSubmit()" >
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputAddress">Title </label>
+        <label for="inputAddress"  style="color: white; margin-left: 4.5%;">Title </label>
         <input type="text" class="form-control" id="inputTitle" placeholder="Title" formControlName="title">
       </div>
       <br>
       <div class="form-group col-md-6">
-        <label for="inputAddress2">Image</label>
+        <label for="inputAddress2"  style="color: white; margin-left:4.5%;">Image</label>
         <input type="text" class="form-control" id="inputImage" placeholder="Image" formControlName="image">
         <img class="img-responsive" src="{{ form.value.image }}"/>
       </div>
       <br>
     </div>
     <div class="form-group col-md-6">
-      <label for="inputAddress3">Description</label>
+      <label for="inputAddress3"  style="color: white; margin-left: 4.5%;">Description</label>
       <textarea type="text" class="form-control" id="inputDescription" placeholder="Description" formControlName="description"> </textarea>
     </div> 
     <br>
@@ -31,6 +31,6 @@
       </div> 
       <br>
     </div> &nbsp; -->
-    <button type="submit" class="btn btn-success" [disabled]="form.invalid">Save</button> &nbsp;|
+    <button type="submit" class="btn btn-success" [disabled]="form.invalid" style="margin-left: 2.5%;">Save</button>&nbsp;|
     <button type="reset" class="btn btn-primary">Clear</button> 
   </form>

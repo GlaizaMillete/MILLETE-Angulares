@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class PostService{
+
     constructor(private http: HttpClient) {
         this.fetchData();
     }
@@ -38,7 +39,7 @@ export class PostService{
 
     likePost(index: number) {
         this.listofPosts[index].numberoflikes++;
-        this.saveData();
+        this.saveData(); // Save the updated posts to the database
     }
 
     addComments(index: number, comment: string){
@@ -54,7 +55,7 @@ export class PostService{
     saveData() {
         this.http.put('https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json', this.listofPosts)
         .subscribe((res) => {
-            console.log(res);
+            console.log(res); 
         });
     }
 
@@ -68,7 +69,7 @@ export class PostService{
                     post.comments = [];
                 }
             });
-            
+
             this.setPosts(listofPosts);
         });
     }

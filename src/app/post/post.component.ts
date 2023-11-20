@@ -25,12 +25,14 @@ export class PostComponent implements OnInit{
     this.router.navigate(['/post-edit', this.index]);
   }
   onlike(){
-    this.postService.likePost(this.index)
+    this.postService.likePost(this.index);
   }
   addComment(comment: string){
     this.postService.addComments(this.index, comment);
     this.newComment = '';
   }
+
 }
+
 
 

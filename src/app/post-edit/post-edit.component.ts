@@ -10,6 +10,15 @@ import { ActivatedRoute ,Params, Router } from '@angular/router';
   styleUrls: ['./post-edit.component.css']
 })
 export class PostEditComponent {
+
+  posts = [
+    { numberoflikes: 100 },
+    { numberoflikes: NaN },
+    { numberoflikes: 50 },
+    { numberoflikes: NaN },
+    { numberoflikes: 75 }
+  ];
+
   index: number = 0;
   form!: FormGroup;
   editMode = false;

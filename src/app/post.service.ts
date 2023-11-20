@@ -42,6 +42,20 @@ export class PostService{
         this.saveData(); // Save the updated posts to the database
     }
 
+    heartPost(index: number) {
+        this.listofPosts[index].numberofhearts++;
+        this.saveData();
+    }
+
+    laughPost(index: number) {
+        this.listofPosts[index].numberoflaugh++;
+        this.saveData();
+    }
+    angryPost(index: number){
+        this.listofPosts[index].numberofangry++;
+        this.saveData;
+    }
+
     addComments(index: number, comment: string){
         this.listofPosts[index].comments.push({text: comment, timestamp: new Date() });
         this.saveData();

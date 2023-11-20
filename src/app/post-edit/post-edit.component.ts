@@ -1,7 +1,7 @@
+import { PostService } from './../post.service';
+import { Post } from './../post.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Post } from '../post.model';
-import { PostService } from '../post.service';
 import { ActivatedRoute ,Params, Router } from '@angular/router'; 
 
 @Component({
@@ -11,13 +11,15 @@ import { ActivatedRoute ,Params, Router } from '@angular/router';
 })
 export class PostEditComponent {
 
-  posts = [
-    { numberoflikes: 100 },
-    { numberoflikes: NaN },
-    { numberoflikes: 50 },
-    { numberoflikes: NaN },
-    { numberoflikes: 75 }
-  ];
+    // posts = [
+    //   { numberoflikes: 100 },
+    //   { numberoflikes: NaN },
+    //   { numberoflikes: 50 },
+    //   { numberoflikes: NaN },
+    //   { numberoflikes: 75 }
+    // ];
+
+
 
   index: number = 0;
   form!: FormGroup;
@@ -59,8 +61,12 @@ export class PostEditComponent {
     const image = this.form.value.image;
     const description = this.form.value.description;
     const numberoflikess = this.form.value.numberoflikes;
+    const numberofheartss = this.form.value.numberofhearts;
+    const numberoflaughs = this.form.value.numberoflaugh;
+    const numberofangryy = this.form.value.numberofangry;
+    
     const post: Post = new Post(
-      title, image, description, 'Glaiza', new Date(), numberoflikess, []
+      title, image, description, 'Glaiza', new Date(), numberoflikess, numberofheartss, numberoflaughs, numberofangryy, []
     );
 
   

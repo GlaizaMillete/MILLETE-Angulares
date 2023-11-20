@@ -11,9 +11,27 @@ export class PostComponent implements OnInit{
   @Input() index: number = 0;
   @Input() post?: Post;
   newComment: string = '';
+  // newTextForComment: string = '';
+
+  postIndex: number = 0; // Replace with the desired post index
+  commentIndex: number = 0; // Replace with the desired comment index
 
   constructor(private postService: PostService, private router: Router, private actRoute: ActivatedRoute) { }
 
+  deleteComment(commentIndex: number): void {
+    if (this.post) {
+      this.postService.deleteComment(this.index, commentIndex);
+    }
+  }
+
+  // editComment(postIndex: number, commentIndex: number, newText: string): void {
+  //   this.postService.editComment(postIndex, commentIndex, newText);
+  // }
+  // editComment(): void {
+  //   this.postService.editComment(this.postIndex, this.commentIndex, this.newTextForComment);
+  //   this.newTextForComment = ''; // Clear the input field after editing
+  // }
+  
   ngOnInit(): void {
     console.log(this.post);
     console.log(this.index);
@@ -40,6 +58,7 @@ export class PostComponent implements OnInit{
     this.postService.addComments(this.index, comment);
     this.newComment = '';
   }
+  
 
 }
 

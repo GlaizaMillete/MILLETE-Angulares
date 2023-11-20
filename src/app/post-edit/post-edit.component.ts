@@ -18,14 +18,28 @@ export class PostEditComponent {
     //   { numberoflikes: NaN },
     //   { numberoflikes: 75 }
     // ];
-
-
-
   index: number = 0;
   form!: FormGroup;
   editMode = false;
+  // editCommentMode = false;
+  // commentIndex: number = -1;
    constructor( private postService: PostService, private router: Router, private actRoute: ActivatedRoute ){ }
 
+//    enterEditCommentMode(commentIndex: number): void {
+//     this.editCommentMode = true;
+//     this.commentIndex = commentIndex;
+//   }
+
+//  updateComment(newText: string): void {
+//     if (this.editMode && this.editCommentMode && this.commentIndex !== -1) {
+//       this.postService.editComment(this.index, this.commentIndex, newText);
+//       this.exitEditCommentMode();
+//     }
+//   }
+
+//  exitEditCommentMode(): void {
+//     this.editCommentMode = false;
+//     this.commentIndex = -1;
   ngOnInit(): void{
 
     let editTitle = '';
@@ -69,6 +83,7 @@ export class PostEditComponent {
       title, image, description, 'Glaiza', new Date(), numberoflikess, numberofheartss, numberoflaughs, numberofangryy, []
     );
 
+  
   
 
     if(this.editMode==false){

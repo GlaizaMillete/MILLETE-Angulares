@@ -51,15 +51,35 @@ export class PostService{
         this.listofPosts[index].numberoflaugh++;
         this.saveData();
     }
-    angryPost(index: number){
+    angryPost(index: number) {
         this.listofPosts[index].numberofangry++;
-        this.saveData;
-    }
+        this.saveData();
+      }
 
     addComments(index: number, comment: string){
         this.listofPosts[index].comments.push({text: comment, timestamp: new Date() });
         this.saveData();
     }
+
+    deleteComment( postIndex: number, commentIndex: number) {
+        if (this.listofPosts[postIndex] && this.listofPosts[postIndex].comments[commentIndex]) {
+            this.listofPosts[postIndex].comments.splice(commentIndex, 1);
+            this.saveData();
+        }
+    }
+
+    // editComment(postIndex: number, commentIndex: number, newText: string) {
+    //     if (this.listofPosts[postIndex] && this.listofPosts[postIndex].comments[commentIndex]) {
+    //         this.listofPosts[postIndex].comments[commentIndex].text = newText;
+    //         this.saveData();
+    //     }
+    // }
+    // editComment(postIndex: number, commentIndex: number, newText: string) {
+    //     if (this.listofPosts[postIndex] && this.listofPosts[postIndex].comments[commentIndex]) {
+    //         this.listofPosts[postIndex].comments[commentIndex].text = newText;
+    //         this.saveData();
+    //     }
+    // }
 
     setPosts(listofPosts: Post[]) {
         this.listofPosts = listofPosts;

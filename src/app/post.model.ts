@@ -9,6 +9,7 @@ export class Post{
     numberoflaugh: number;
     numberofangry : number;
     comments: {text: string, timestamp: Date}[] = [];
+    
 
     constructor(title: string, image: string, description: string, author: string, dateCreated: Date, numberoflikes: number = 0, numberofhearts: number = 0, numberoflaugh: number = 0, numberofangry: number = 0, comments: {text: string, timestamp: Date}[] = [])     
     {

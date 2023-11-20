@@ -54,7 +54,7 @@ export class PostService{
     angryPost(index: number) {
         this.listofPosts[index].numberofangry++;
         this.saveData();
-      }
+    }
 
     addComments(index: number, comment: string){
         this.listofPosts[index].comments.push({text: comment, timestamp: new Date() });

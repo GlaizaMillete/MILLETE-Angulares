@@ -28,7 +28,7 @@ export class AuthService {
   signIn(username: string, password: string): boolean {
     const user = this.users.find(user => user.username === username && user.password === password);
     if (user) {
-      this.router.navigate(['/home']); // Navigate to Home page
+      this.router.navigate(['/post-list']); // Navigate to Home page
       return true; // SignIn successful
     }
   

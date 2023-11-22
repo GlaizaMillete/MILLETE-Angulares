@@ -1,0 +1,17 @@
+.taas{
+    margin-left: 28%;
+    color: white;
+    margin-top: 5%;
+}
+button{
+    margin-left: 12%;
+}
+input[type=text]{
+    border: 3px solid black;
+    border-radius: 10px;
+}
+input[type=password]{
+    border: 3px solid black;
+    border-radius: 10px;
+    margin-left: 4px;
+}

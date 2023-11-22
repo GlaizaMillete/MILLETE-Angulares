@@ -10,7 +10,7 @@ import { ActivatedRoute ,Params, Router } from '@angular/router';
   styleUrls: ['./post-edit.component.css']
 })
 export class PostEditComponent {
-
+  
     // posts = [
     //   { numberoflikes: 100 },
     //   { numberoflikes: NaN },
@@ -21,30 +21,25 @@ export class PostEditComponent {
   index: number = 0;
   form!: FormGroup;
   editMode = false;
-  // editCommentMode = false;
-  // commentIndex: number = -1;
+
    constructor( private postService: PostService, private router: Router, private actRoute: ActivatedRoute ){ }
 
-//    enterEditCommentMode(commentIndex: number): void {
-//     this.editCommentMode = true;
-//     this.commentIndex = commentIndex;
-//   }
+  //  editComment() {
+  //   const postIndex = 0; // Replace with the desired post index
+  //   const commentIndex = 0; // Replace with the desired comment index
+  //   const newText = 'This is the edited comment'; // Replace with the new text for the comment
 
-//  updateComment(newText: string): void {
-//     if (this.editMode && this.editCommentMode && this.commentIndex !== -1) {
-//       this.postService.editComment(this.index, this.commentIndex, newText);
-//       this.exitEditCommentMode();
-//     }
-//   }
+  //   this.postService.editComment(postIndex, commentIndex, newText);
+  
+  
 
-//  exitEditCommentMode(): void {
-//     this.editCommentMode = false;
-//     this.commentIndex = -1;
   ngOnInit(): void{
 
     let editTitle = '';
     let editImage = '';
     let editDescription = '';
+
+  
 
     this.actRoute.params.subscribe((params: Params) => {
       if (params['index']){
@@ -83,7 +78,7 @@ export class PostEditComponent {
       title, image, description, 'Glaiza', new Date(), numberoflikess, numberofheartss, numberoflaughs, numberofangryy, []
     );
 
-  
+    
   
 
     if(this.editMode==false){

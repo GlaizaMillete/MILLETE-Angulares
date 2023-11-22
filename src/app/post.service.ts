@@ -10,6 +10,8 @@ export class PostService{
         this.fetchData();
     }
 
+    
+
     listChangedEvent: EventEmitter<Post[]> = new EventEmitter();
 
     listofPosts: Post[] = [];
@@ -67,19 +69,6 @@ export class PostService{
             this.saveData();
         }
     }
-
-    // editComment(postIndex: number, commentIndex: number, newText: string) {
-    //     if (this.listofPosts[postIndex] && this.listofPosts[postIndex].comments[commentIndex]) {
-    //         this.listofPosts[postIndex].comments[commentIndex].text = newText;
-    //         this.saveData();
-    //     }
-    // }
-    // editComment(postIndex: number, commentIndex: number, newText: string) {
-    //     if (this.listofPosts[postIndex] && this.listofPosts[postIndex].comments[commentIndex]) {
-    //         this.listofPosts[postIndex].comments[commentIndex].text = newText;
-    //         this.saveData();
-    //     }
-    // }
 
     setPosts(listofPosts: Post[]) {
         this.listofPosts = listofPosts;

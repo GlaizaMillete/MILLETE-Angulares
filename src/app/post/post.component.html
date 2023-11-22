@@ -65,20 +65,10 @@ border-radius: 25px; width: 40%; box-shadow:  5px 5px 10px 5px rgba(0, 0, 0, 0.3
     <button class="btn btn-danger" (click)="deleteComment(i)" style="margin-right: 30%; width:7%; font-size: smaller; margin-bottom: 2%;">Delete</button>
 </div>
 
-<!-- <div *ngFor="let comment of post?.comments; let i = index">
-    <p>{{ comment.text }}</p>
-    <input type="text" [(ngModel)]="newTextForComment">
-    <button (click)="editComment(index, i, newTextForComment)">Edit</button>
-  </div> -->
-  
-
-  
-
-
 
 <div>
     <input type="text" [(ngModel)]="newComment" style="margin-left:  32.5%; "> &nbsp;
-    
+   
     <button class="btn btn-primary" (click)="addComment(newComment)">Add Comment</button>
-
 </div>
+

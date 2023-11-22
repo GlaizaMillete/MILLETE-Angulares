@@ -2,19 +2,21 @@ import { Component, OnInit, Input } from '@angular/core';
 import{ Post } from '../post.model';
 import { PostService } from '../post.service';
 import { Router, ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
+
 export class PostComponent implements OnInit{
   @Input() index: number = 0;
   @Input() post?: Post;
+ 
   newComment: string = '';
-  // newTextForComment: string = '';
 
-  postIndex: number = 0; // Replace with the desired post index
-  commentIndex: number = 0; // Replace with the desired comment index
+  postIndex: number = 0; 
+  commentIndex: number = 0; 
 
   constructor(private postService: PostService, private router: Router, private actRoute: ActivatedRoute) { }
 
@@ -24,18 +26,15 @@ export class PostComponent implements OnInit{
     }
   }
 
-  // editComment(postIndex: number, commentIndex: number, newText: string): void {
-  //   this.postService.editComment(postIndex, commentIndex, newText);
-  // }
-  // editComment(): void {
-  //   this.postService.editComment(this.postIndex, this.commentIndex, this.newTextForComment);
-  //   this.newTextForComment = ''; // Clear the input field after editing
-  // }
-  
+ 
+
   ngOnInit(): void {
     console.log(this.post);
     console.log(this.index);
+
   }
+
+  
   delete(){
     this.postService.deletePost(this.index);
   }
@@ -59,7 +58,6 @@ export class PostComponent implements OnInit{
     this.newComment = '';
   }
   
-
 }
 
 

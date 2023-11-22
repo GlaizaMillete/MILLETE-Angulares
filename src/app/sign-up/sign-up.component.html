@@ -1,0 +1,15 @@
+<form (ngSubmit)="signUp()">
+    <label>
+      Username:
+      <input [(ngModel)]="username" name="username" required>
+    </label>
+  
+    <label>
+      Password:
+      <input [(ngModel)]="password" name="password" type="password" required>
+    </label>
+  
+    <button type="submit">Sign Up</button>
+  </form>
+  
+  <p>Already have an account? <a routerLink="/sign-in">Sign In</a></p>

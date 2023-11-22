@@ -1,24 +1,31 @@
 <div class="login">
   <div style="width: 13%;">
-    <form class="taas" (ngSubmit)="signUp()">
-      <div>
-        <label class="ayos">
-          Username<br>
-          <input type="text" [(ngModel)]="username" name="username" required>
-        </label>
-      </div>
-      <div>
-        <label>
-          Password<br>
-          <input type="password" [(ngModel)]="password" name="password" type="password" required>
-        </label>
-      </div>
-      <div style="justify-content: center;display: flex;">
-        <button type="submit">Sign Up</button>
-      </div>
-      <div style="justify-content: center;display: flex;">
-        <p>Already have an account? <a routerLink="/sign-in">Sign In</a></p>
-      </div>
-    </form>
+    <div class="laman">
+      <form class="taas" (ngSubmit)="signUp()">
+        
+        <div>
+          <label class="ayos">
+            Username<br>
+            <input type="text" [(ngModel)]="username" name="username" required>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            Password<br>
+            <input type="password" [(ngModel)]="password" name="password" required>
+          </label>
+        </div>
+
+        <div style="justify-content: center;display: flex;">
+          <button type="submit">Sign Up</button>
+        </div>
+
+        <div style="justify-content: center;display: flex;">
+          <p>Already have an account? <a routerLink="/sign-in">Sign In</a></p>
+        </div>
+
+      </form>
+    </div>  
   </div>
 </div>

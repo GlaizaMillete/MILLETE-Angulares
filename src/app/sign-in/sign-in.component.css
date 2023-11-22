@@ -1,0 +1,30 @@
+input {
+    width: 100%;
+}
+
+.signin {
+    width: 100%;
+    top: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: white;
+}
+
+label {
+    display: block;
+}
+
+.signin div{
+    width: 100%;
+    }
+    .signin div:nth-child(2){
+    margin-top: 1rem;
+    }
+    .signin div:nth-child(3){
+        margin-top: 1rem;
+    }
+    .signin div:nth-child(4){
+        margin-top: 1rem;
+    }

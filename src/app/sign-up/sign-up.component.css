@@ -1,15 +1,24 @@
 input {
-    width: 100%;
+    width: 145%;
 }
 
 .login {
     width: 100%;
-    top: 40%;
+    top: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
+    color: white;
+    /* border: 5px solid rgb(24, 24, 24); */
 }
+
+.laman{
+    background-color: blue;
+    border-radius: 45px;
+    height: 100%;
+}
+
 
 label {
     display: block;

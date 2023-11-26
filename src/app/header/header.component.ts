@@ -12,21 +12,22 @@ import { AuthService } from '../auth.service';
 })
 export class HeaderComponent implements OnInit{
 
-  username: string = '';
-  password: string = '';
+  // username: string = '';
+  // password: string = '';
+  // email: string = '';
 
   constructor(private backEndService: BackEndService, private postService: PostService, private route: ActivatedRoute, private authService: AuthService){ }
 
 ngOnInit(): void {
     
 }
-onSignIn() {
-  this.authService.signIn(this.username, this.password);
-}
+// onSignIn() {
+//   this.authService.signIn(this.username, this.password);
+// }
 
-onSignUp() {
-  this.authService.signUp(this.username, this.password);
-}
+// onSignUp() {
+//   this.authService.signUp(this.username, this.email, this.password);
+// }
 
 onSave(){
   // this.backEndService.saveData();

@@ -31,8 +31,6 @@ export class PostEditComponent {
 
   //   this.postService.editComment(postIndex, commentIndex, newText);
   
-  
-
   ngOnInit(): void{
 
     let editTitle = '';
@@ -79,8 +77,6 @@ export class PostEditComponent {
     );
 
     
-  
-
     if(this.editMode==false){
       this.postService.addPost(post);
     }

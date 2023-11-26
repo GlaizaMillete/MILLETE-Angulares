@@ -9,8 +9,8 @@ import { PostEditComponent } from './post-edit/post-edit.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+// import { SignInComponent } from './sign-in/sign-in.component';
+// import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 
@@ -22,15 +22,15 @@ const routes: Routes = [
   { path: 'post-list', component: PostListComponent },
   { path: 'post-add', component: PostEditComponent },
   { path: 'authentication', component: AuthComponent },
-  { path: 'sign-in', component: SignInComponent },
-  { path: 'sign-up', component: SignUpComponent},
+  // { path: 'sign-in', component: SignInComponent },
+  // { path: 'sign-up', component: SignUpComponent},
   { path: 'post-edit/:index', component: PostEditComponent },
  
 ];
 
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, HeaderComponent, PostComponent, PostEditComponent, PostListComponent, SignInComponent, SignUpComponent],
+  declarations: [AppComponent, AuthComponent, HeaderComponent, PostComponent, PostEditComponent, PostListComponent],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]

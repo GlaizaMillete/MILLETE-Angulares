@@ -1,0 +1,71 @@
+<<<<<<< Updated upstream
+=======
+/* input {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    border-radius: 15px 
+}
+
+.text-align-center {
+    text-align: center;
+} */
+
+/*
+    .text-align-center label {
+        text-align: left;
+    } */
+
+/* .signin {
+    width: 100%;
+    top: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: white; */
+    /* border: 5px solid rgb(24, 24, 24); */
+    /* }
+    .signin label{
+        text-align: left;
+        font-size: 25px;
+    } */
+
+/* .laman {
+    background-color: blue;
+    border-radius: 45px;
+    height: fit-content;
+    width: 20%;
+    justify-content: center;
+    display: flex;
+    }
+    .laman div{
+        margin-top: 1rem;
+        width: 100%;
+    }
+
+label {
+    display: block;
+} */
+
+/* .login div {
+    width: 100%;
+} */
+
+
+/* .signin div:nth-child(1) {
+    margin-top: 2rem;
+}
+
+.signin div:nth-child(2) {
+    margin-top: 2rem;
+}
+
+.signin div:nth-child(3) {
+    margin: 2rem 0;
+}
+
+.signin div:nth-child(4) {
+    margin-top: 1rem;
+} */
+>>>>>>> Stashed changes

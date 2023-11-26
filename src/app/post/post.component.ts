@@ -15,7 +15,7 @@ export class PostComponent implements OnInit{
  
   newComment: string = '';
 
-  postIndex: number = 0; 
+  // postIndex: number = 0; 
   commentIndex: number = 0; 
 
   constructor(private postService: PostService, private router: Router, private actRoute: ActivatedRoute) { }

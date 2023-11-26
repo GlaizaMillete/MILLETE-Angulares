@@ -1,11 +1,25 @@
-<div>
-    <label>
-      Username:
-      <input type="text" [(ngModel)]="username" placeholder="username">
-    </label>
-    <label>
-      Password:
-      <input type="password" [(ngModel)]="password" placeholder="password" type="password">
-    </label>
-    <button (click)="signIn()">Sign In</button>
+<div class="signin">
+  <div style="width: 13%;">
+    <form>
+
+      <div>
+        <label>
+          Username:
+          <input type="text" [(ngModel)]="username" placeholder="username" required>
+        </label>
+      </div>
+
+      <div>
+        <label>
+          Password:
+          <input type="password" [(ngModel)]="password" placeholder="password" type="password" required>
+        </label>
+      </div>
+
+      <div style="justify-content: center;display: flex;">
+        <button (click)="signIn()">Sign In</button>
+      </div>
+
+    </form>
   </div>
+</div>

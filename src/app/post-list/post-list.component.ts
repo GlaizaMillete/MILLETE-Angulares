@@ -23,7 +23,7 @@ export class PostListComponent implements OnInit{
     this.listofPosts=this.postService.getPost();
     this.postService.listChangedEvent.subscribe((posts: Post[]) => {
       this.listofPosts = posts;
-      this.router.navigate(['/sign-up']);
+     
     });
   }
 

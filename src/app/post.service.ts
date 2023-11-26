@@ -76,14 +76,14 @@ export class PostService{
     }
 
     saveData() {
-        this.http.put('https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json', this.listofPosts)
+        this.http.put('https://millete-d9059-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json', this.listofPosts)
         .subscribe((res) => {
             console.log(res); 
         });
     }
 
     fetchData() {
-        this.http.get<Post[]>('https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json')
+        this.http.get<Post[]>('https://millete-d9059-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json')
         .subscribe((listofPosts: Post[]) => {
             console.log(listofPosts)
 

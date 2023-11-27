@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 /* input {
@@ -19,10 +20,20 @@
 /* .signin {
     width: 100%;
     top: 25%;
+=======
+input {
+    width: 100%;
+}
+
+.signin {
+    width: 100%;
+    top: 40%;
+>>>>>>> e18979e1abe8229027f928f23734d3729e13334a
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
+<<<<<<< HEAD
     color: white; */
     /* border: 5px solid rgb(24, 24, 24); */
     /* }
@@ -69,3 +80,24 @@ label {
     margin-top: 1rem;
 } */
 >>>>>>> Stashed changes
+=======
+    color: white;
+}
+
+label {
+    display: block;
+}
+
+.signin div{
+    width: 100%;
+    }
+    .signin div:nth-child(2){
+    margin-top: 1rem;
+    }
+    .signin div:nth-child(3){
+        margin-top: 1rem;
+    }
+    .signin div:nth-child(4){
+        margin-top: 1rem;
+    }
+>>>>>>> e18979e1abe8229027f928f23734d3729e13334a

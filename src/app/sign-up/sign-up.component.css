@@ -1,5 +1,6 @@
 <<<<<<< Updated upstream
 input {
+<<<<<<< HEAD
     width: 100%;
 =======
 /* input {
@@ -8,6 +9,9 @@ input {
     padding: 5px;
     border-radius: 15px 
 >>>>>>> Stashed changes
+=======
+    width: 145%;
+>>>>>>> e18979e1abe8229027f928f23734d3729e13334a
 }
 
 .text-align-center {
@@ -21,11 +25,12 @@ input {
 
 /* .login {
     width: 100%;
-    top: 40%;
+    top: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 }
 
@@ -52,6 +57,19 @@ input {
     }
 
 >>>>>>> Stashed changes
+=======
+    color: white;
+    /* border: 5px solid rgb(24, 24, 24); */
+}
+
+.laman{
+    background-color: blue;
+    border-radius: 45px;
+    height: 100%;
+}
+
+
+>>>>>>> e18979e1abe8229027f928f23734d3729e13334a
 label {
     display: block;
 } */

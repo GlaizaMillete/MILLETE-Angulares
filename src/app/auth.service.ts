@@ -1,10 +1,94 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  constructor(private fireauth: AngularFireAuth, private router: Router ){}
+
+  ngOnInit(): void {
+
+  }
+
+  // login
+  login(email: string, password: string){
+    this.fireauth.signInWithEmailAndPassword(email, password). then( res => {
+      localStorage.setItem('token', 'true');
+     
+      if(res.user?.emailVerified == true) {
+        this.router.navigate(['post-list']);
+      } else{
+        this.router.navigate(['/verify-email']);
+      }
+
+    }, err => {
+      alert(err.message);
+      this.router.navigate(['/login']);
+    })
+  }
+
+  // register
+  register(email: string, password: string){
+    this.fireauth.createUserWithEmailAndPassword(email, password). then( (res) => {
+      alert('Registration Successfully');
+      this.router.navigate(['/login']);
+      this.sendEmailForVerification(res.user);
+    }, err => {
+      alert(err.message);
+      this.router.navigate(['/register']);
+    })
+  }
+
+  isloggedIn(){
+    return this.router.url === '/post-list';
+  }
+
+  // logout
+  logout(){
+    this.fireauth.signOut(). then( () => {
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }, err => {
+      alert(err.message);
+    })
+  } 
+
+  // forgot Password
+  forgotPassword(email: string){
+    this.fireauth.sendPasswordResetEmail(email).then( () => {
+      this.router.navigate(['/verify-email']);
+    }, err => {
+      alert('Something went wrong');
+    })
+  }
+
+  // email verification
+  sendEmailForVerification(user: any) {
+    user.sendEmailForVerification().then ((res : any) => {
+      this.router.navigate(['/verify-email']);
+    }, (err : any ) => {
+      alert('Something went wrong. Not able to send mail to your email');
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // private users: { username: string, email: string, password: string }[] = [];
 
   // constructor(private router: Router) {

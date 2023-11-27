@@ -1,7 +1,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-<nav class="navbar navbar-expand-lg" style="background-color: rgb(1, 4, 57);  color: white; height: 81px;">
+<nav *ngIf="authService.isloggedIn() || router.url.includes('post-list')" class="navbar navbar-expand-lg" style="background-color: rgb(1, 4, 57);  color: white; height: 81px;">
     <div class="container-fluid">
       <a class="navbar-brand" routerLink="/post-list" style="color: white; font-size: xx-large;">CRUD</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,10 +35,11 @@
           <button class="btn btn-outline-success" type="submit">Search</button> -->
           <!-- <button class="nav-link btn btn-outline-success" type="submit" (click)="onSave()" style=" font-size: large;">SAVE</button> &nbsp;&nbsp;
           <button class="nav-link btn btn-outline-success" type="submit" (click)="onFetch()"  style=" font-size: large;" >GET</button> &nbsp;&nbsp; -->
-          <!-- <button class="nav-link btn btn-outline-success" routerLink="/sign-up" type="submit" style=" font-size: large;" (click)="onSignIn()">SignUp</button> &nbsp;&nbsp;
-
-          <button class="nav-link btn btn-outline-success" type="submit"  style=" font-size: large;" (click)="onSignUp()">SignIn</button>
-        </form> -->
+        <form>
+          <button class="nav-link btn btn-outline-success" type="button" style="color: white; font-size: x-large;     padding: 10px; margin-top: 23px;" (click)="logout()">Logout</button> &nbsp;&nbsp;
+<!-- 
+          <button class="nav-link btn btn-outline-success" type="submit"  style=" font-size: large;" (click)="logout()">Logout</button> -->
+        </form>
 
         <!-- Other HTML code -->
         

@@ -9,8 +9,12 @@ import { PostEditComponent } from './post-edit/post-edit.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-// import { SignInComponent } from './sign-in/sign-in.component';
-// import { SignUpComponent } from './sign-up/sign-up.component';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment.prod';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
 
 
 
@@ -19,19 +23,21 @@ import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', redirectTo: 'post-list', pathMatch: 'full'},
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: 'verify-email', component: VerifyEmailComponent },
+  { path: 'forgotPassword', component: ForgotPasswordComponent },
   { path: 'post-list', component: PostListComponent },
   { path: 'post-add', component: PostEditComponent },
   { path: 'authentication', component: AuthComponent },
-  // { path: 'sign-in', component: SignInComponent },
-  // { path: 'sign-up', component: SignUpComponent},
   { path: 'post-edit/:index', component: PostEditComponent },
  
 ];
 
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, HeaderComponent, PostComponent, PostEditComponent, PostListComponent],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpClientModule],
+  declarations: [AppComponent, AuthComponent, HeaderComponent, PostComponent, PostEditComponent, PostListComponent, LoginComponent, RegisterComponent, ForgotPasswordComponent, VerifyEmailComponent],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpClientModule, AngularFireModule.initializeApp(environment.firebase)],
   providers: [],
   bootstrap: [AppComponent]
 })

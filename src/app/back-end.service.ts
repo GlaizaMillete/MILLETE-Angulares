@@ -13,14 +13,14 @@ export class BackEndService {
 
   saveData(){
     const listofPosts: Post[] = this.postService.getPost();
-    this.http.put('https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json', listofPosts)
+    this.http.put('https://millete-d9059-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json', listofPosts)
     .subscribe((res) => {
       console.log(res);
     })
   }
 
   fetchData(){
-    return this.http.get<Post[]>('https://angulares-5b06f-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json')
+    return this.http.get<Post[]>('https://millete-d9059-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json')
     .pipe(tap((listofPosts: Post[])=> {
       console.log(listofPosts)
 

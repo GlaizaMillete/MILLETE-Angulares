@@ -67,7 +67,7 @@ export class AuthService {
 
   // email verification
   sendEmailForVerification(user: any) {
-    user.sendEmailForVerification().then ((res : any) => {
+    user.sendEmailVerification().then ((res : any) => {
       this.router.navigate(['/verify-email']);
     }, (err : any ) => {
       alert('Something went wrong. Not able to send mail to your email');

@@ -16,8 +16,8 @@ export class ForgotPasswordComponent {
 
   }
 
-  forgotPassword(){
-    this.auth.forgotPassword(this.email);
-    this.email = '';
-  }
+  // forgotPassword(){
+  //   this.auth.forgotPassword(this.email);
+  //   this.email = '';
+  // }
 }

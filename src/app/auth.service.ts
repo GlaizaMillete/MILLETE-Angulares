@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { User } from './user.model';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  
+ 
 
-  constructor(private fireauth: AngularFireAuth, private router: Router ){}
+  constructor(private fireauth: AngularFireAuth, private router: Router, private userService: UserService ){}
 
   ngOnInit(): void {
 
@@ -15,15 +19,15 @@ export class AuthService {
 
   // login
   login(email: string, password: string){
-    this.fireauth.signInWithEmailAndPassword(email, password). then( res => {
+    this.fireauth.signInWithEmailAndPassword(email, password).then( res => {
       localStorage.setItem('token', 'true');
-     
-      if(res.user?.emailVerified == true) {
-        this.router.navigate(['post-list']);
-      } else{
-        this.router.navigate(['/verify-email']);
+      // Fetch the user's data from your backend or Firebase
+      if (res.user) {
+        this.userService.getUser(res.user.uid).subscribe((user: any) => {
+          localStorage.setItem('username', user.username); // Update the username in the local storage
+        });
       }
-
+      this.router.navigate(['post-list']);
     }, err => {
       alert(err.message);
       this.router.navigate(['/login']);
@@ -31,17 +35,19 @@ export class AuthService {
   }
 
   // register
-  register(email: string, password: string){
+  register(email: string, password: string, username: string){ // add username parameter
     this.fireauth.createUserWithEmailAndPassword(email, password). then( (res) => {
       alert('Registration Successfully');
+      localStorage.setItem('username', username); // store username in local storage
       this.router.navigate(['/login']);
-      this.sendEmailForVerification(res.user);
+      // this.sendEmailForVerification(res.user);
     }, err => {
       alert(err.message);
       this.router.navigate(['/register']);
     })
   }
 
+  // isloggenIn
   isloggedIn(){
     return this.router.url === '/post-list';
   }
@@ -55,39 +61,6 @@ export class AuthService {
       alert(err.message);
     })
   } 
-
-  // forgot Password
-  forgotPassword(email: string){
-    this.fireauth.sendPasswordResetEmail(email).then( () => {
-      this.router.navigate(['/verify-email']);
-    }, err => {
-      alert('Something went wrong');
-    })
-  }
-
-  // email verification
-  sendEmailForVerification(user: any) {
-    user.sendEmailVerification().then ((res : any) => {
-      this.router.navigate(['/verify-email']);
-    }, (err : any ) => {
-      alert('Something went wrong. Not able to send mail to your email');
-    })
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // private users: { username: string, email: string, password: string }[] = [];
 

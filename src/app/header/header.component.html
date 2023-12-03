@@ -41,19 +41,18 @@
           <button class="nav-link btn btn-outline-success" type="submit"  style=" font-size: large;" (click)="logout()">Logout</button> -->
         <!-- </form> -->
 
-        <form>
-          <div class="dropdown">
+          <div  class="dropdown">
             <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #2b2f7c; color: white; font-size: large; padding: 9px; margin-top: 3px; margin-right: 13px; border-radius: 10px; border: 0px solid black;">
-              Account
+              {{username}}
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li><a class="dropdown-item" href="/profile">Profile</a></li>
-              <li><a class="dropdown-item" href="/settings">Settings</a></li>
+              <!-- <li><a class="dropdown-item" href="/settings">Settings</a></li> -->
               <li><hr class="dropdown-divider"></li>
               <li><button class="dropdown-item" (click)="logout()">Logout</button></li>
             </ul>
           </div>
-        </form>
+        
 
         <!-- Other HTML code -->
         

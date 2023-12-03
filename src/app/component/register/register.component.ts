@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { UserService } from './../../user.service';
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 
@@ -8,8 +10,10 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class RegisterComponent {
   
+  username: string = '';
   email: string = '';
   password: string = '';
+  
 
   constructor(private auth: AuthService){}
 
@@ -18,6 +22,7 @@ export class RegisterComponent {
   }
 
   register(){
+    
     if(this.email == ''){
       alert('Please enter your Email');
       return;
@@ -28,8 +33,9 @@ export class RegisterComponent {
       return;
     }
 
-    this.auth.register(this.email, this.password);
+    this.auth.register(this.email, this.password, this.username);
 
+    
     this.email = '';
     this.password = '';    
   }

@@ -1,4 +1,10 @@
+<div class="create-post-button">
+    <input class="btn btn-light" type="text" routerLink="/post-add" value="Create a Post">
+</div>
+
 <ng-container *ngFor="let post of listofPosts; let i= index">
     <app-post [post]="post" [index]="i"></app-post>
 </ng-container>
 <br>
+
+

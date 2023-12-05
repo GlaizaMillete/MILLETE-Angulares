@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class RegisterComponent {
   
-  username: string = '';
+
   email: string = '';
   password: string = '';
   
@@ -33,7 +33,7 @@ export class RegisterComponent {
       return;
     }
 
-    this.auth.register(this.email, this.password, this.username);
+    this.auth.register(this.email, this.password);
 
     
     this.email = '';

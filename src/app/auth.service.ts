@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from './user.model';
 import { UserService } from './user.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
- 
+  emailUpdated = new Subject<string>();
 
   constructor(private fireauth: AngularFireAuth, private router: Router, private userService: UserService ){}
 
@@ -17,6 +18,8 @@ export class AuthService {
 
   }
 
+
+  
   // login
   login(email: string, password: string){
     this.fireauth.signInWithEmailAndPassword(email, password).then( res => {
@@ -24,8 +27,10 @@ export class AuthService {
       // Fetch the user's data from your backend or Firebase
       if (res.user) {
         this.userService.getUser(res.user.uid).subscribe((user: any) => {
-          localStorage.setItem('username', user.username); // Update the username in the local storage
+          // localStorage.setItem('username', user.username); // Update the username in the local storage
         });
+        localStorage.setItem('email', res.user.email || '');
+        this.emailUpdated.next(res.user.email || '');
       }
       this.router.navigate(['post-list']);
     }, err => {
@@ -35,10 +40,15 @@ export class AuthService {
   }
 
   // register
-  register(email: string, password: string, username: string){ // add username parameter
+  register(email: string, password: string){ // add username parameter
     this.fireauth.createUserWithEmailAndPassword(email, password). then( (res) => {
       alert('Registration Successfully');
-      localStorage.setItem('username', username); // store username in local storage
+
+      if (res.user){
+        localStorage.setItem('email', res.user.email || '');
+        this.emailUpdated.next(res.user.email || '');
+      }
+      // localStorage.setItem('username', username); // store username in local storage
       this.router.navigate(['/login']);
       // this.sendEmailForVerification(res.user);
     }, err => {

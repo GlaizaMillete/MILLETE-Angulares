@@ -14,17 +14,21 @@ import { UserService } from '../user.service';
 })
 export class HeaderComponent implements OnInit {
 
-  username: string | null; // Define the 'username' property
-
+  // username: string | null; // Define the 'username' property
+  email: string = '';
 
   constructor(private backEndService: BackEndService, private postService: PostService, private route: ActivatedRoute, public authService: AuthService, private fireauth: AngularFireAuth, public router: Router, private userService: UserService) {
-    this.username = localStorage.getItem('username'); // get username from local storage
-
+    this.authService.emailUpdated.subscribe((email: string) => {
+      this.email = email;
+      localStorage.setItem('email', email);
+  });
+    
+    // this.username = localStorage.getItem('username'); // get username from local storage
   }
 
   ngOnInit(): void {
 
-
+    this.email = localStorage.getItem('email') || '';
   }
 
 

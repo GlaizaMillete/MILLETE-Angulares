@@ -12,4 +12,5 @@ export class UserService {
   getUser(uid: string) {
     return this.firestore.collection('users').doc(uid).valueChanges();
   }
+  
 }

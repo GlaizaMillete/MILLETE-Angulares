@@ -5,4 +5,38 @@
     padding: 5%;
     display: inline-block;
 } */
+/* .poste{
+    background-color: rgb(94, 92, 92);
+    padding-top: 20px; 
+    padding-bottom: 20px;
+    border: 2px solid rgb(94, 92, 92);
+    border-radius: 15px;
+    width: 37em;
+    height: 44em;
+} */
+.reactions{
+    justify-content:center; 
+    text-align: center;
+}
 
+.p-com{
+    margin-left: 37%;  
+    align-items: center; 
+    justify-content:space-between; 
+    color: white; 
+    font-size:medium; 
+    margin-bottom: 2%;
+}
+
+
+.del{
+    margin-top: -6%;
+    justify-content: center;
+    margin-left: 35%;
+    width:160vh;
+}
+
+.input{
+    text-align: center; 
+    justify-content: center;
+}

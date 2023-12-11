@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   // username: string | null; // Define the 'username' property
   email: string = '';
+  // imageUrl = localStorage.getItem('imageUrl');
 
   constructor(private backEndService: BackEndService, private postService: PostService, private route: ActivatedRoute, public authService: AuthService, private fireauth: AngularFireAuth, public router: Router, private userService: UserService) {
     this.authService.emailUpdated.subscribe((email: string) => {
@@ -29,9 +30,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
     this.email = localStorage.getItem('email') || '';
+    
+    
   }
 
-
+  
 
   // logout
   logout() {

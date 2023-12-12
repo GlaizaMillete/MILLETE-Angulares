@@ -18,6 +18,8 @@ export class PostComponent implements OnInit{
   // postIndex: number = 0; 
   commentIndex: number = 0; 
 
+  userReaction: 'like' | 'heart' | 'laugh' | 'angry' | null = null;
+
   constructor(private postService: PostService, private router: Router, private actRoute: ActivatedRoute) { }
 
   deleteComment(commentIndex: number): void {
@@ -41,17 +43,29 @@ export class PostComponent implements OnInit{
   onEdit(){
     this.router.navigate(['/post-edit', this.index]);
   }
-  onlike(){
-    this.postService.likePost(this.index);
+  onlike() {
+    if (this.userReaction !== 'like') {
+      this.postService.likePost(this.index);
+      this.userReaction = 'like';
+    }
   }
-  onheart(){
-    this.postService.heartPost(this.index);
+  onheart() {
+    if (this.userReaction !== 'heart') {
+      this.postService.heartPost(this.index);
+      this.userReaction = 'heart';
+    }
   }
-  onlaugh(){
-    this.postService.laughPost(this.index);
+  onlaugh() {
+    if (this.userReaction !== 'laugh') {
+      this.postService.laughPost(this.index);
+      this.userReaction = 'laugh';
+    }
   }
-  onangry(){
-    this.postService.angryPost(this.index);
+  onangry() {
+    if (this.userReaction !== 'angry') {
+      this.postService.angryPost(this.index);
+      this.userReaction = 'angry';
+    }
   }
   addComment(comment: string){
     this.postService.addComments(this.index, comment);

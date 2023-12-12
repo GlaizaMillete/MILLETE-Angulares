@@ -1,4 +1,5 @@
 export class Post{
+    reactedUsers: string[] = [];
     title: string;
     image: string;
     description: string;

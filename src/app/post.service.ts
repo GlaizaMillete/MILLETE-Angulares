@@ -39,23 +39,36 @@ export class PostService{
         return this.listofPosts[index];
     }
 
-    likePost(index: number) {
-        this.listofPosts[index].numberoflikes++;
-        this.saveData(); // Save the updated posts to the database
+    likePost(index: number, email: string) {
+        if (!this.listofPosts[index].reactedUsers.includes(email)) {
+            this.listofPosts[index].numberoflikes++;
+            this.listofPosts[index].reactedUsers.push(email);
+            this.saveData();
+        }
     }
-
-    heartPost(index: number) {
-        this.listofPosts[index].numberofhearts++;
-        this.saveData();
+    
+    heartPost(index: number, email: string) {
+        if (!this.listofPosts[index].reactedUsers.includes(email)) {
+            this.listofPosts[index].numberofhearts++;
+            this.listofPosts[index].reactedUsers.push(email);
+            this.saveData();
+        }
     }
-
-    laughPost(index: number) {
-        this.listofPosts[index].numberoflaugh++;
-        this.saveData();
+    
+    laughPost(index: number, email: string) {
+        if (!this.listofPosts[index].reactedUsers.includes(email)) {
+            this.listofPosts[index].numberoflaugh++;
+            this.listofPosts[index].reactedUsers.push(email);
+            this.saveData();
+        }
     }
-    angryPost(index: number) {
-        this.listofPosts[index].numberofangry++;
-        this.saveData();
+    
+    angryPost(index: number, email: string) {
+        if (!this.listofPosts[index].reactedUsers.includes(email)) {
+            this.listofPosts[index].numberofangry++;
+            this.listofPosts[index].reactedUsers.push(email);
+            this.saveData();
+        }
     }
 
     addComments(index: number, comment: string){

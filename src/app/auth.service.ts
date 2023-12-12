@@ -3,14 +3,14 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from './user.model';
 import { UserService } from './user.service';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  emailUpdated = new Subject<string>();
+  emailUpdated = new BehaviorSubject<string>('');
 
   constructor(private fireauth: AngularFireAuth, private router: Router, private userService: UserService ){}
 
@@ -18,7 +18,9 @@ export class AuthService {
 
   }
 
-
+  getCurrentUserId(): Promise<string | null> {
+    return this.fireauth.currentUser.then(user => user ? user.uid : null);
+  }
   
   // login
   login(email: string, password: string){

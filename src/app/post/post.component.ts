@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import{ Post } from '../post.model';
 import { PostService } from '../post.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-post',
@@ -17,10 +18,14 @@ export class PostComponent implements OnInit{
 
   // postIndex: number = 0; 
   commentIndex: number = 0; 
+  email: string = ''; 
 
-  userReaction: 'like' | 'heart' | 'laugh' | 'angry' | null = null;
-
-  constructor(private postService: PostService, private router: Router, private actRoute: ActivatedRoute) { }
+  constructor(private postService: PostService, private router: Router, private actRoute: ActivatedRoute, private authService: AuthService) {
+    this.authService.emailUpdated.subscribe((email: string) => {
+      this.email = email;
+      localStorage.setItem('email', email);
+    });
+   }
 
   deleteComment(commentIndex: number): void {
     if (this.post) {
@@ -43,29 +48,20 @@ export class PostComponent implements OnInit{
   onEdit(){
     this.router.navigate(['/post-edit', this.index]);
   }
-  onlike() {
-    if (this.userReaction !== 'like') {
-      this.postService.likePost(this.index);
-      this.userReaction = 'like';
-    }
+  onlike(){
+    this.postService.likePost(this.index, this.email);
   }
-  onheart() {
-    if (this.userReaction !== 'heart') {
-      this.postService.heartPost(this.index);
-      this.userReaction = 'heart';
-    }
+
+  onheart(){
+      this.postService.heartPost(this.index, this.email);
   }
-  onlaugh() {
-    if (this.userReaction !== 'laugh') {
-      this.postService.laughPost(this.index);
-      this.userReaction = 'laugh';
-    }
+
+  onlaugh(){
+      this.postService.laughPost(this.index, this.email);
   }
-  onangry() {
-    if (this.userReaction !== 'angry') {
-      this.postService.angryPost(this.index);
-      this.userReaction = 'angry';
-    }
+
+  onangry(){
+      this.postService.angryPost(this.index, this.email);
   }
   addComment(comment: string){
     this.postService.addComments(this.index, comment);

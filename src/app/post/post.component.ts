@@ -21,20 +21,31 @@ export class PostComponent implements OnInit{
   commentIndex: number = 0; 
   email: string = ''; 
   isEditing: boolean[] = [];
+  selectedCommentIndex: number | null = null; // Add this line
   
-
+  
   constructor(private postService: PostService, private router: Router, private actRoute: ActivatedRoute, private authService: AuthService) {
     this.authService.emailUpdated.subscribe((email: string) => {
       this.email = email;
       localStorage.setItem('email', email);
-    });
-   }
-
-  deleteComment(commentIndex: number): void {
-    if (this.post) {
-      this.postService.deleteComment(this.index, commentIndex);
+      });
+    
     }
+
+    deleteComment(commentIndex: number): void {
+      if (this.post) {
+        this.postService.deleteComment(this.index, commentIndex);
+      }
+      this.selectedCommentIndex = null;
+      
+    
   }
+  
+  selectComment(index: number): void { // Add this method
+    this.selectedCommentIndex = index;
+  }
+  
+
   
   toggleEdit(index: number) {
     this.isEditing[index] = !this.isEditing[index];
@@ -78,6 +89,7 @@ export class PostComponent implements OnInit{
   editComment(commentIndex: number, newText: string) {
     this.postService.editComment(this.index, commentIndex, newText);
     this.isEditing[commentIndex] = false;
+    this.selectedCommentIndex = null; // Add this line
   }
 }
 

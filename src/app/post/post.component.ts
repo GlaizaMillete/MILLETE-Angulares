@@ -12,6 +12,7 @@ import { AuthService } from '../auth.service';
 
 export class PostComponent implements OnInit{
   @Input() index: number = 0;
+  newCommentText: string[] = [];
   @Input() post?: Post;
  
   newComment: string = '';
@@ -19,6 +20,8 @@ export class PostComponent implements OnInit{
   // postIndex: number = 0; 
   commentIndex: number = 0; 
   email: string = ''; 
+  isEditing: boolean[] = [];
+  
 
   constructor(private postService: PostService, private router: Router, private actRoute: ActivatedRoute, private authService: AuthService) {
     this.authService.emailUpdated.subscribe((email: string) => {
@@ -32,8 +35,13 @@ export class PostComponent implements OnInit{
       this.postService.deleteComment(this.index, commentIndex);
     }
   }
-
- 
+  
+  toggleEdit(index: number) {
+    this.isEditing[index] = !this.isEditing[index];
+    if (this.isEditing[index] && this.post && this.post.comments[index]) {
+      this.newCommentText[index] = this.post.comments[index].text;
+    }
+  }
 
   ngOnInit(): void {
     console.log(this.post);
@@ -67,7 +75,10 @@ export class PostComponent implements OnInit{
     this.postService.addComments(this.index, comment);
     this.newComment = '';
   }
-  
+  editComment(commentIndex: number, newText: string) {
+    this.postService.editComment(this.index, commentIndex, newText);
+    this.isEditing[commentIndex] = false;
+  }
 }
 
 

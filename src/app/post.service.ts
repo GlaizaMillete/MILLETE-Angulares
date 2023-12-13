@@ -76,6 +76,13 @@ export class PostService{
         this.saveData();
     }
 
+    editComment(postIndex: number, commentIndex: number, newText: string) {
+        if (this.listofPosts[postIndex] && this.listofPosts[postIndex].comments[commentIndex]) {
+          this.listofPosts[postIndex].comments[commentIndex].text = newText;
+          this.saveData();
+        }
+    }
+
     deleteComment( postIndex: number, commentIndex: number) {
         if (this.listofPosts[postIndex] && this.listofPosts[postIndex].comments[commentIndex]) {
             this.listofPosts[postIndex].comments.splice(commentIndex, 1);

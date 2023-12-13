@@ -110,17 +110,23 @@
         </div> 
 
         <div  class="p-com" *ngFor="let comment of post?.comments let i = index">
-            <p><i></i> {{comment.text}} <small>{{comment.timestamp | date:'short'}}</small></p>
+            <!-- <p *ngIf="!isEditing[i]" (click)="toggleEdit(i)">{{comment.text}} <small>{{comment.timestamp | date:'short'}}</small></p> -->
+            <!-- <p><i></i> {{comment.text}} <small>{{comment.timestamp | date:'short'}}</small></p> -->
+            <p *ngIf="!isEditing[i]" (click)="toggleEdit(i)">{{comment.text}} <small>{{comment.timestamp | date:'short'}}</small></p>
             
+
             <div class="del">
                 <button class="btn btn-danger" (click)="deleteComment(i)" style=" width:7%; font-size: smaller;">Delete</button>
             </div>
+
+            <input *ngIf="isEditing[i]" type="text" [(ngModel)]="newCommentText[i]" placeholder="New comment text">
+            <button *ngIf="isEditing[i]" class="btn btn-success" (click)="editComment(i, newCommentText[i])">Edit</button>
+
         </div>
 
         <div class="input">
-            <input type="text" [(ngModel)]="newComment"> &nbsp;
+            <input type="text" [(ngModel)]="newComment" (keyup.enter)="addComment(newComment)"> &nbsp;
             <button class="btn btn-primary" (click)="addComment(newComment)">Add Comment</button>
-           
         </div>
 
     </div>

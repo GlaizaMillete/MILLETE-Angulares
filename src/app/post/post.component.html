@@ -109,19 +109,14 @@
             <h5 style="text-align: center; justify-content: center; color: white; font-size: larger; margin-bottom: 2%;">Comments</h5>
         </div> 
 
-        <div  class="p-com" *ngFor="let comment of post?.comments let i = index">
-            <!-- <p *ngIf="!isEditing[i]" (click)="toggleEdit(i)">{{comment.text}} <small>{{comment.timestamp | date:'short'}}</small></p> -->
-            <!-- <p><i></i> {{comment.text}} <small>{{comment.timestamp | date:'short'}}</small></p> -->
-            <p *ngIf="!isEditing[i]" (click)="toggleEdit(i)">{{comment.text}} <small>{{comment.timestamp | date:'short'}}</small></p>
-            
-
-            <div class="del">
+        <div  class="p-com" *ngFor="let comment of post?.comments; let i = index">
+            <p *ngIf="!isEditing[i]" (click)="selectComment(i)">{{comment.text}} <small>{{comment.timestamp | date:'short'}}</small></p>
+            <div class="del" *ngIf="selectedCommentIndex === i">
                 <button class="btn btn-danger" (click)="deleteComment(i)" style=" width:7%; font-size: smaller;">Delete</button>
+                <button class="btn btn-success" (click)="toggleEdit(i)">Edit</button>
             </div>
-
-            <input *ngIf="isEditing[i]" type="text" [(ngModel)]="newCommentText[i]" placeholder="New comment text">
-            <button *ngIf="isEditing[i]" class="btn btn-success" (click)="editComment(i, newCommentText[i])">Edit</button>
-
+            <input *ngIf="isEditing[i] && selectedCommentIndex === i" type="text" [(ngModel)]="newCommentText[i]" placeholder="New comment text">
+            <button *ngIf="isEditing[i] && selectedCommentIndex === i" class="btn btn-success" (click)="editComment(i, newCommentText[i])">Save</button>
         </div>
 
         <div class="input">

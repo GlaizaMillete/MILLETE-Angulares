@@ -35,7 +35,7 @@
     </div>
 
     <div class="img">
-        <img class="img-responisve" src="{{ post?.image }}" style="justify-content: center; margin-left: 37%; border-radius: 25px; width: 25%; box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3)">
+        <img class="img-responisve" src="{{ post?.image }}">
     </div>
 
     <div class="desc">
@@ -55,6 +55,7 @@
     <!-- buttons -->
     <div class="buttons">
         <div class="reactions">
+            
             <button class="btn btn-primary" (click)="onlike()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                     class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
@@ -65,39 +66,41 @@
             </button>
     
             <!-- heart -->
-    
-            <button class="btn btn-danger" (click)="onheart()" >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                </svg>
-                <span *ngIf="post && post.numberofhearts> 0"> {{ post.numberofhearts }}</span>
-            </button>
-    
-            <!-- laugh -->
-    
-            <button class="btn btn-warning" (click)="onlaugh()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                    class="bi bi-emoji-laughing" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                    <path
-                        d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z" />
-                </svg>
-                <span *ngIf="post && post.numberoflaugh> 0"> {{ post.numberoflaugh }}</span>
-            </button>
-    
-            <!-- angry -->
-    
-            <button class="btn btn-danger" (click)="onangry()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-emoji-angry"
-                    viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                    <path
-                        d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zm6.991-8.38a.5.5 0 1 1 .448.894l-1.009.504c.176.27.285.64.285 1.049 0 .828-.448 1.5-1 1.5s-1-.672-1-1.5c0-.247.04-.48.11-.686a.502.502 0 0 1 .166-.761l2-1zm-6.552 0a.5.5 0 0 0-.448.894l1.009.504A1.94 1.94 0 0 0 5 6.5C5 7.328 5.448 8 6 8s1-.672 1-1.5c0-.247-.04-.48-.11-.686a.502.502 0 0 0-.166-.761l-2-1z" />
-                </svg>
-                <span *ngIf="post && post.numberofangry> 0"> {{ post.numberofangry }}</span>
-            </button>
+            <div class="other-reactions">
+                <button class="btn btn-danger" (click)="onheart()" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg>
+                    <span *ngIf="post && post.numberofhearts> 0"> {{ post.numberofhearts }}</span>
+                </button>
+        
+                <!-- laugh -->
+        
+                <button class="btn btn-warning" (click)="onlaugh()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-emoji-laughing" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z" />
+                    </svg>
+                    <span *ngIf="post && post.numberoflaugh> 0"> {{ post.numberoflaugh }}</span>
+                </button>
+        
+                <!-- angry -->
+        
+                <button class="btn btn-danger" (click)="onangry()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-emoji-angry"
+                        viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zm6.991-8.38a.5.5 0 1 1 .448.894l-1.009.504c.176.27.285.64.285 1.049 0 .828-.448 1.5-1 1.5s-1-.672-1-1.5c0-.247.04-.48.11-.686a.502.502 0 0 1 .166-.761l2-1zm-6.552 0a.5.5 0 0 0-.448.894l1.009.504A1.94 1.94 0 0 0 5 6.5C5 7.328 5.448 8 6 8s1-.672 1-1.5c0-.247-.04-.48-.11-.686a.502.502 0 0 0-.166-.761l-2-1z" />
+                    </svg>
+                    <span *ngIf="post && post.numberofangry> 0"> {{ post.numberofangry }}</span>
+                </button>
+            
+            </div>
        
             <button class="btn btn-success" (click)="onEdit()">edit</button>
             <button class="btn btn-danger" (click)="delete()">delete</button>  
@@ -105,8 +108,8 @@
         </div>
         <br>
 
-        <div>
-            <h5 style="text-align: center; justify-content: center; color: white; font-size: larger; margin-bottom: 2%;">Comments</h5>
+        <div class="comment-text">
+            <h5 style="text-align: center; justify-content: center; color: white; font-size: larger; ">Comments</h5>
         </div> 
 
         <div  class="p-com" *ngFor="let comment of post?.comments; let i = index">
@@ -123,6 +126,7 @@
             <input type="text" [(ngModel)]="newComment" (keyup.enter)="addComment(newComment)"> &nbsp;
             <button class="btn btn-primary" (click)="addComment(newComment)">Add Comment</button>
         </div>
+        
 
     </div>
  

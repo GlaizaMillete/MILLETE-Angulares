@@ -22,18 +22,18 @@ export class HeaderComponent implements OnInit {
     this.authService.emailUpdated.subscribe((email: string) => {
       this.email = email;
       localStorage.setItem('email', email);
-  });
+    });
     
     // this.username = localStorage.getItem('username'); // get username from local storage
   }
 
   ngOnInit(): void {
-
-    this.email = localStorage.getItem('email') || '';
-    
-    
+    this.email = this.authService.getCurrentEmail();
   }
 
+  goToTop() {
+    window.scrollTo(0, 0);
+  }
   
 
   // logout

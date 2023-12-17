@@ -1,10 +1,13 @@
-<div class="create-post-button">
-    <input class="btn btn-light" type="text" routerLink="/post-add" value="Create a Post">
+<div  class="create-post-container">
+    <div class="create-post-button">
+        <input class="btn btn-light" type="text" routerLink="/post-add" value="Create a Post">
+    </div>
 </div>
 
-<ng-container *ngFor="let post of listofPosts; let i= index">
-    <app-post [post]="post" [index]="i"></app-post>
-</ng-container>
-<br>
-
+    <div class="posts-container">
+        <div class="post-box" *ngFor="let post of listofPosts; let i= index">
+            <app-post [post]="post" [index]="i"></app-post>
+        </div>
+    </div>
+  
 

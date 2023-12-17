@@ -12,15 +12,23 @@ export class AuthService {
   
   emailUpdated = new BehaviorSubject<string>('');
 
-  constructor(private fireauth: AngularFireAuth, private router: Router, private userService: UserService ){}
+
+  constructor(private fireauth: AngularFireAuth, private router: Router, private userService: UserService ){
+    const email = this.getCurrentEmail();
+    this.emailUpdated.next(email);
+  }
+
+  getCurrentEmail(): string {
+    return localStorage.getItem('email') || '';
+  }
 
   ngOnInit(): void {
 
   }
 
-  getCurrentUserId(): Promise<string | null> {
-    return this.fireauth.currentUser.then(user => user ? user.uid : null);
-  }
+  // getCurrentUserId(): Promise<string | null> {
+  //   return this.fireauth.currentUser.then(user => user ? user.uid : null);
+  // }
   
   // login
   login(email: string, password: string){

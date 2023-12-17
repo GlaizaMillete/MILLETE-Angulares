@@ -89,7 +89,8 @@ export class PostComponent implements OnInit{
       this.postService.angryPost(this.index, this.email);
   }
   addComment(comment: string){
-    this.postService.addComments(this.index, comment);
+    const email = this.authService.getCurrentEmail(); 
+    this.postService.addComments(this.index, comment, email);
     this.newComment = '';
   }
   editComment(commentIndex: number, newText: string) {

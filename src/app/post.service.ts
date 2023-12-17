@@ -71,8 +71,8 @@ export class PostService{
         }
     }
 
-    addComments(index: number, comment: string){
-        this.listofPosts[index].comments.push({text: comment, timestamp: new Date() });
+    addComments(index: number, comment: string, email: string){
+        this.listofPosts[index].comments.push({text: comment, timestamp: new Date(), email: email });
         this.saveData();
     }
 

@@ -1,5 +1,6 @@
 export class Post{
     reactedUsers: string[] = [];
+    email: string;
     title: string;
     image: string;
     description: string;
@@ -9,11 +10,11 @@ export class Post{
     numberofhearts: number;
     numberoflaugh: number;
     numberofangry : number;
-    comments: {text: string, timestamp: Date}[] = [];
+    comments: {text: string, timestamp: Date, email: string}[] = [];
     
 
-    constructor(title: string, image: string, description: string, author: string, dateCreated: Date, numberoflikes: number = 0, numberofhearts: number = 0, numberoflaugh: number = 0, numberofangry: number = 0, comments: {text: string, timestamp: Date}[] = [])     
-    {
+    constructor(email: string, title: string, image: string, description: string, author: string, dateCreated: Date, numberoflikes: number = 0, numberofhearts: number = 0, numberoflaugh: number = 0, numberofangry: number = 0, comments: {text: string, timestamp: Date, email: string}[] = []) {
+        this.email = email;
         this.title = title;
         this.image = image;
         this.description = description;

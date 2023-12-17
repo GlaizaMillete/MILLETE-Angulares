@@ -3,6 +3,7 @@ import { Post } from './../post.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute ,Params, Router } from '@angular/router'; 
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-post-edit',
@@ -22,7 +23,7 @@ export class PostEditComponent {
   form!: FormGroup;
   editMode = false;
 
-   constructor( private postService: PostService, private router: Router, private actRoute: ActivatedRoute ){ }
+   constructor( private postService: PostService, private router: Router, private actRoute: ActivatedRoute, private authService: AuthService ){ }
 
   //  editComment() {
   //   const postIndex = 0; // Replace with the desired post index
@@ -64,6 +65,7 @@ export class PostEditComponent {
 
   onSubmit(){
     if(this.form.valid){
+    const email = this.authService.getCurrentEmail();
     const title = this.form.value.title;
     const image = this.form.value.image;
     const description = this.form.value.description;
@@ -73,7 +75,7 @@ export class PostEditComponent {
     const numberofangryy = this.form.value.numberofangry;
     
     const post: Post = new Post(
-      title, image, description, 'Glaiza', new Date(), numberoflikess, numberofheartss, numberoflaughs, numberofangryy, []
+      email, title, image, description, 'Glaiza', new Date(), numberoflikess, numberofheartss, numberoflaughs, numberofangryy, []
     );
 
     

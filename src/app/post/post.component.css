@@ -20,6 +20,17 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    top: 12px;
+}
+
+.hr2{
+    color: white;
+    margin-top: 0%;
+}
+
+.hr1{
+    color: white;
+    margin-bottom: 0%;
 }
 
 .reactions .other-reactions {
@@ -45,6 +56,7 @@
     background-color: #111010;
     border-radius: 7px; /* adjust as needed */
     padding: 5px; /* adjust as needed */
+    margin-right: 60%;
 }
 .p-com{
     margin-left: 37%;  
@@ -80,7 +92,21 @@
 }
 
 .auth, .date, .p-com, .input, .input button, .del{
-    font-size: 12px; /* adjust as needed */
+    font-size: 15px; /* adjust as needed */
+}
+
+.p{
+    margin-left: -160px;
+}
+.comment-box {
+    border: 1px solid #111010;
+    background-color: #1f1c56;
+    margin-top: -2%;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 580px;
+    height: auto;  /* adjust as needed */
 }
 
 

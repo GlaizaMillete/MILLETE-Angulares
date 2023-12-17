@@ -21,7 +21,8 @@ export class PostComponent implements OnInit{
   commentIndex: number = 0; 
   email: string = ''; 
   isEditing: boolean[] = [];
-  selectedCommentIndex: number | null = null; // Add this line
+  selectedCommentIndex: number | null = null; 
+  isInputVisible = false;// Add this line
   
   
   constructor(private postService: PostService, private router: Router, private actRoute: ActivatedRoute, private authService: AuthService) {
@@ -54,13 +55,18 @@ export class PostComponent implements OnInit{
     }
   }
 
+  
+
   ngOnInit(): void {
     console.log(this.post);
     console.log(this.index);
 
   }
 
-  
+  toggleInputVisibility() {
+    this.isInputVisible = !this.isInputVisible;
+  }
+
   delete(){
     this.postService.deletePost(this.index);
   }

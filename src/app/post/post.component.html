@@ -51,7 +51,7 @@
     <div class="date">
         <p style="text-align: center; justify-content: center;  color: white;">Date: {{ post?.dateCreated }}</p>
     </div>
-
+    <hr class="hr1">
     <!-- buttons -->
     <div class="buttons">
         <div class="reactions">
@@ -101,30 +101,34 @@
                 </button>
             
             </div>
+
+            <div class="input" *ngIf="isInputVisible">
+                <input type="text" [(ngModel)]="newComment" (keyup.enter)="addComment(newComment); toggleInputVisibility()">
+                <button class="btn btn-primary" (click)="addComment(newComment); toggleInputVisibility()">AddComment</button>
+            </div>
+            <button class="btn btn-primary" *ngIf="!isInputVisible" (click)="toggleInputVisibility()">Comment</button>
        
             <button class="btn btn-success" (click)="onEdit()">edit</button>
             <button class="btn btn-danger" (click)="delete()">delete</button>  
 
         </div>
         <br>
+        
+        <hr class="hr2">
+        <div class="comment-box">
+            <div class="comment-text">
+                <h5 style="text-align: center; justify-content: center; color: white; font-size: larger; ">Comments</h5>
+            </div> 
 
-        <div class="comment-text">
-            <h5 style="text-align: center; justify-content: center; color: white; font-size: larger; ">Comments</h5>
-        </div> 
-
-        <div  class="p-com" *ngFor="let comment of post?.comments; let i = index">
-            <p *ngIf="!isEditing[i]" (click)="selectComment(i)">{{comment.text}} <small>{{comment.timestamp | date:'short'}}</small></p>
-            <div class="del" *ngIf="selectedCommentIndex === i">
-                <button class="btn btn-danger" (click)="deleteComment(i)" style=" width:7%; font-size: smaller;">Delete</button>
-                <button class="btn btn-success" (click)="toggleEdit(i)">Edit</button>
+            <div  class="p-com" *ngFor="let comment of post?.comments; let i = index">
+                <p class="p" *ngIf="!isEditing[i]" (click)="selectComment(i)">{{comment.text}} <small>{{comment.timestamp | date:'short'}}</small></p>
+                <div class="del" *ngIf="selectedCommentIndex === i">
+                    <button class="btn btn-danger" (click)="deleteComment(i)" style=" width:7%; font-size: smaller;">Delete</button>
+                    <button class="btn btn-success" (click)="toggleEdit(i)">Edit</button>
+                </div>
+                <input *ngIf="isEditing[i] && selectedCommentIndex === i" type="text" [(ngModel)]="newCommentText[i]" placeholder="New comment text">
+                <button *ngIf="isEditing[i] && selectedCommentIndex === i" class="btn btn-success" (click)="editComment(i, newCommentText[i])">Save</button>
             </div>
-            <input *ngIf="isEditing[i] && selectedCommentIndex === i" type="text" [(ngModel)]="newCommentText[i]" placeholder="New comment text">
-            <button *ngIf="isEditing[i] && selectedCommentIndex === i" class="btn btn-success" (click)="editComment(i, newCommentText[i])">Save</button>
-        </div>
-
-        <div class="input">
-            <input type="text" [(ngModel)]="newComment" (keyup.enter)="addComment(newComment)"> &nbsp;
-            <button class="btn btn-primary" (click)="addComment(newComment)">Add Comment</button>
         </div>
         
 
